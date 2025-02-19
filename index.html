@@ -23,11 +23,11 @@
 
     <section id="menu">
         <h2>Menú</h2>
-        <h3>Comida</h3>
+        <h3 id="comidaHeading">Comida</h3>
         <ul id="comidaItems"></ul>
-        <h3>Bebida</h3>
+        <h3 id="bebidaHeading">Bebida</h3>
         <ul id="bebidaItems"></ul>
-        <h3>Otros</h3>
+        <h3 id="otrosHeading">Otros</h3>
         <ul id="otrosItems"></ul>
     </section>
 
@@ -46,15 +46,33 @@
             <input type="text" id="precio" name="precio" required>
             <button type="button" onclick="actualizarMenu()">Agregar</button>
         </form>
+        <h3>Crear Nueva Subcategoría</h3>
+        <form id="subcategoriaForm">
+            <label for="nuevaSubcategoria">Nombre de la Subcategoría:</label>
+            <input type="text" id="nuevaSubcategoria" name="nuevaSubcategoria" required>
+            <button type="button" onclick="crearSubcategoria()">Crear Subcategoría</button>
+        </form>
+        <h3>Eliminar Categoría</h3>
+        <form id="eliminarCategoriaForm">
+            <label for="eliminarCategoria">Seleccione la Categoría:</label>
+            <select id="eliminarCategoria" name="eliminarCategoria" required>
+                <option value="comida">Comida</option>
+                <option value="bebida">Bebida</option>
+                <option value="otros">Otros</option>
+            </select>
+            <button type="button" onclick="eliminarCategoria()">Eliminar</button>
+        </form>
     </section>
 
-    <section id="login">
-        <h2>Acceso para Administradores</h2>
-        <form id="loginForm">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" required>
-            <button type="button" onclick="verificarPassword()">Entrar</button>
-        </form>
+    <section id="admin-acceso">
+        <button id="adminToggle">Acceso para Administradores</button>
+        <div id="adminLogin" style="display: none;">
+            <form id="loginForm">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" required>
+                <button type="button" onclick="verificarPassword()">Entrar</button>
+            </form>
+        </div>
     </section>
 </main>
 
@@ -75,6 +93,11 @@
                 nuevoItem.textContent = item;
                 document.getElementById(`${categoria}Items`).appendChild(nuevoItem);
             });
+        });
+
+        document.getElementById('adminToggle').addEventListener('click', () => {
+            const adminLogin = document.getElementById('adminLogin');
+            adminLogin.style.display = adminLogin.style.display === 'none' ? 'block' : 'none';
         });
     }
 
@@ -98,15 +121,61 @@
         }
     }
 
+    function crearSubcategoria() {
+        const nuevaSubcategoria = document.getElementById('nuevaSubcategoria').value;
+        if (nuevaSubcategoria) {
+            const nuevoHeading = document.createElement('h3');
+            nuevoHeading.textContent = nuevaSubcategoria;
+            const nuevoUl = document.createElement('ul');
+            nuevoUl.id = `${nuevaSubcategoria.toLowerCase()}Items`;
+            document.getElementById('menu').appendChild(nuevoHeading);
+            document.getElementById('menu').appendChild(nuevoUl);
+
+            // Añadir opción al selector de categorías
+            const nuevaOpcion = document.createElement('option');
+            nuevaOpcion.value = nuevaSubcategoria.toLowerCase();
+            nuevaOpcion.textContent = nuevaSubcategoria;
+            document.getElementById('categoria').appendChild(nuevaOpcion);
+            
+            // Guardar en localStorage
+            localStorage.setItem(`${nuevaSubcategoria.toLowerCase()}Items`, JSON.stringify([]));
+            document.getElementById('subcategoriaForm').reset();
+        } else {
+            alert('Por favor, ingrese el nombre de la subcategoría.');
+        }
+    }
+
     function verificarPassword() {
         const password = document.getElementById('password').value;
         const adminPassword = 'admin123'; // Cambia esta contraseña por una segura
 
         if (password === adminPassword) {
-            document.getElementById('login').style.display = 'none';
+            document.getElementById('adminLogin').style.display = 'none';
             document.getElementById('actualizar-menu').style.display = 'block';
         } else {
             alert('Contraseña incorrecta.');
+        }
+    }
+
+    function eliminarCategoria() {
+        const categoria = document.getElementById('eliminarCategoria').value;
+        if (confirm(`¿Está seguro de que desea eliminar la categoría ${categoria}? Esta acción no se puede deshacer.`)) {
+            // Eliminar los elementos de la categoría del DOM
+            const heading = document.getElementById(`${categoria}Heading`);
+            const items = document.getElementById(`${categoria}Items`);
+            if (heading && items) {
+                heading.remove();
+                items.remove();
+            }
+
+            // Eliminar la categoría del selector y del localStorage
+            const option = document.querySelector(`#categoria option[value=${categoria}]`);
+            if (option) {
+                option.remove();
+            }
+            localStorage.removeItem(`${categoria}Items`);
+
+            alert(`Categoría ${categoria} eliminada exitosamente.`);
         }
     }
 </script>
