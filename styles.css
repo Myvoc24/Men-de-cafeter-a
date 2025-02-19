@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F5F5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #FFD700;
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-family: 'Georgia', serif;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section h2 {
+    color: #333;
+    font-size: 2em;
+    border-bottom: 2px solid #FFD700;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+section h3 {
+    color: #555;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+#comidaItems li, #bebidaItems li, #otrosItems li {
+    background-color: #FFFFFF;
+    border: 1px solid #FFD700;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#comidaItems li:hover, #bebidaItems li:hover, #otrosItems li:hover {
+    background-color: #FFE4B5;
+}
+
+#menuForm, #loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#menuForm label, #loginForm label {
+    margin: 10px 0 5px;
+}
+
+#menuForm select, #menuForm input, #loginForm input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+#menuForm button, #loginForm button {
+    background-color: #FFD700;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+#menuForm button:hover, #loginForm button:hover {
+    background-color: #FFC107;
+}
+
+footer {
+    background-color: #FFD700;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
