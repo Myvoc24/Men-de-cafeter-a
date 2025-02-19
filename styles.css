@@ -1,124 +1,156 @@
+/* Reset de márgenes y rellenos */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Fuente y fondo general */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F5F5F5;
+    background-color: #fff5e6; /* Fondo color crema */
     color: #333;
-    margin: 0;
-    padding: 0;
 }
 
 header {
-    background-color: #FFD700;
-    color: #FFFFFF;
-    padding: 20px 0;
+    background-color: #ff6f61; /* Naranja intenso */
+    color: white;
+    padding: 1rem;
     text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    font-family: 'Georgia', serif;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     justify-content: center;
 }
 
-nav ul li {
-    margin: 0 15px;
+nav li {
+    margin: 0 1rem;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.2em;
+#menu {
+    padding: 2rem;
+    background-color: #ffcc80; /* Naranja suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
 }
 
-nav ul li a:hover {
-    color: #FFD700;
+#menu h2, #menu h3 {
+    color: #d84315; /* Marrón rojizo */
+    margin-bottom: 1rem;
 }
 
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+#menu ul {
+    list-style: none;
+    margin-bottom: 2rem;
 }
 
-section h2 {
-    color: #333;
-    font-size: 2em;
-    border-bottom: 2px solid #FFD700;
-    display: inline-block;
-    margin-bottom: 20px;
+#menu li {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    color: #4e342e; /* Marrón oscuro */
 }
 
-section h3 {
-    color: #555;
-    font-size: 1.5em;
-    margin-top: 20px;
+#actualizar-menu {
+    padding: 2rem;
+    background-color: #eceff1; /* Gris claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
 }
 
-#comidaItems li, #bebidaItems li, #otrosItems li {
-    background-color: #FFFFFF;
-    border: 1px solid #FFD700;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+#actualizar-menu h2 {
+    color: #546e7a; /* Azul grisáceo */
+    margin-bottom: 1rem;
 }
 
-#comidaItems li:hover, #bebidaItems li:hover, #otrosItems li:hover {
-    background-color: #FFE4B5;
-}
-
-#menuForm, #loginForm {
-    display: flex;
-    flex-direction: column;
-}
-
-#menuForm label, #loginForm label {
-    margin: 10px 0 5px;
-}
-
-#menuForm select, #menuForm input, #loginForm input {
+#menuForm label,
+#menuForm select,
+#menuForm input,
+#menuForm button {
+    display: block;
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #CCC;
-    border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
-#menuForm button, #loginForm button {
-    background-color: #FFD700;
-    color: #FFFFFF;
-    padding: 10px 20px;
+#menuForm select,
+#menuForm input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#menuForm button {
+    padding: 0.75rem;
+    background-color: #ff6f61; /* Naranja intenso */
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    align-self: flex-start;
-    margin-top: 10px;
 }
 
-#menuForm button:hover, #loginForm button:hover {
-    background-color: #FFC107;
+#menuForm button:hover {
+    background-color: #e64a19; /* Naranja más oscuro */
+}
+
+#login {
+    padding: 2rem;
+    background-color: #eceff1; /* Gris claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 300px;
+}
+
+#login h2 {
+    color: #546e7a; /* Azul grisáceo */
+    margin-bottom: 1rem;
+}
+
+#loginForm label,
+#loginForm input,
+#loginForm button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#loginForm input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#loginForm button {
+    padding: 0.75rem;
+    background-color: #ff6f61; /* Naranja intenso */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#loginForm button:hover {
+    background-color: #e64a19; /* Naranja más oscuro */
 }
 
 footer {
-    background-color: #FFD700;
-    color: #FFFFFF;
+    background-color: #333;
+    color: white;
     text-align: center;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
-    margin-top: 20px;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
 }
