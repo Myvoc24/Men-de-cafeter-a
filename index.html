@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú de la Cafetería</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Si tienes un archivo CSS -->
+    <script defer src="script.js"></script> <!-- Enlace al archivo JavaScript -->
 </head>
 <body>
-
 <header>
     <h1>Páramo</h1>
     <nav>
@@ -18,28 +18,16 @@
         </ul>
     </nav>
 </header>
-
 <main>
-
     <section id="menu">
         <h2>Menú</h2>
-        <h3 id="comidaHeading">Comida</h3>
-        <ul id="comidaItems"></ul>
-        <h3 id="bebidaHeading">Bebida</h3>
-        <ul id="bebidaItems"></ul>
-        <h3 id="otrosHeading">Otros</h3>
-        <ul id="otrosItems"></ul>
+        <!-- Sección dinámica para las categorías -->
     </section>
-
     <section id="actualizar-menu" style="display: none;">
         <h2>Actualizar Menú</h2>
         <form id="menuForm">
             <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria" required>
-                <option value="comida">Comida</option>
-                <option value="bebida">Bebida</option>
-                <option value="otros">Otros</option>
-            </select>
+            <select id="categoria" name="categoria" required></select>
             <label for="producto">Producto:</label>
             <input type="text" id="producto" name="producto" required>
             <label for="precio">Precio:</label>
@@ -55,15 +43,10 @@
         <h3>Eliminar Categoría</h3>
         <form id="eliminarCategoriaForm">
             <label for="eliminarCategoria">Seleccione la Categoría:</label>
-            <select id="eliminarCategoria" name="eliminarCategoria" required>
-                <option value="comida">Comida</option>
-                <option value="bebida">Bebida</option>
-                <option value="otros">Otros</option>
-            </select>
-            <button type="button" onclick="eliminarCategoria()">Eliminar</button>
+            <select id="eliminarCategoria" name="eliminarCategoria" required></select>
+            <button type="button" onclick="eliminarCategoriaCompleta()">Eliminar</button>
         </form>
     </section>
-
     <section id="admin-acceso">
         <button id="adminToggle">Acceso para Administradores</button>
         <div id="adminLogin" style="display: none;">
@@ -75,110 +58,9 @@
         </div>
     </section>
 </main>
-
 <footer>
     <p>Contacto: info@cafeteria.com</p>
     <p>Síguenos en nuestras redes sociales</p>
 </footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", cargarMenu);
-
-    function cargarMenu() {
-        const categorias = ["comida", "bebida", "otros"];
-        categorias.forEach(categoria => {
-            const items = JSON.parse(localStorage.getItem(`${categoria}Items`)) || [];
-            items.forEach(item => {
-                const nuevoItem = document.createElement('li');
-                nuevoItem.textContent = item;
-                document.getElementById(`${categoria}Items`).appendChild(nuevoItem);
-            });
-        });
-
-        document.getElementById('adminToggle').addEventListener('click', () => {
-            const adminLogin = document.getElementById('adminLogin');
-            adminLogin.style.display = adminLogin.style.display === 'none' ? 'block' : 'none';
-        });
-    }
-
-    function actualizarMenu() {
-        const categoria = document.getElementById('categoria').value;
-        const producto = document.getElementById('producto').value;
-        const precio = document.getElementById('precio').value;
-        if (producto && precio) {
-            const nuevoItem = `${producto} - $${precio}`;
-            const nuevoLi = document.createElement('li');
-            nuevoLi.textContent = nuevoItem;
-            document.getElementById(`${categoria}Items`).appendChild(nuevoLi);
-            
-            const items = JSON.parse(localStorage.getItem(`${categoria}Items`)) || [];
-            items.push(nuevoItem);
-            localStorage.setItem(`${categoria}Items`, JSON.stringify(items));
-            
-            document.getElementById('menuForm').reset();
-        } else {
-            alert('Por favor, complete todos los campos.');
-        }
-    }
-
-    function crearSubcategoria() {
-        const nuevaSubcategoria = document.getElementById('nuevaSubcategoria').value;
-        if (nuevaSubcategoria) {
-            const nuevoHeading = document.createElement('h3');
-            nuevoHeading.textContent = nuevaSubcategoria;
-            const nuevoUl = document.createElement('ul');
-            nuevoUl.id = `${nuevaSubcategoria.toLowerCase()}Items`;
-            document.getElementById('menu').appendChild(nuevoHeading);
-            document.getElementById('menu').appendChild(nuevoUl);
-
-            // Añadir opción al selector de categorías
-            const nuevaOpcion = document.createElement('option');
-            nuevaOpcion.value = nuevaSubcategoria.toLowerCase();
-            nuevaOpcion.textContent = nuevaSubcategoria;
-            document.getElementById('categoria').appendChild(nuevaOpcion);
-            
-            // Guardar en localStorage
-            localStorage.setItem(`${nuevaSubcategoria.toLowerCase()}Items`, JSON.stringify([]));
-            document.getElementById('subcategoriaForm').reset();
-        } else {
-            alert('Por favor, ingrese el nombre de la subcategoría.');
-        }
-    }
-
-    function verificarPassword() {
-        const password = document.getElementById('password').value;
-        const adminPassword = 'admin123'; // Cambia esta contraseña por una segura
-
-        if (password === adminPassword) {
-            document.getElementById('adminLogin').style.display = 'none';
-            document.getElementById('actualizar-menu').style.display = 'block';
-        } else {
-            alert('Contraseña incorrecta.');
-        }
-    }
-
-    function eliminarCategoria() {
-        const categoria = document.getElementById('eliminarCategoria').value;
-        if (confirm(`¿Está seguro de que desea eliminar la categoría ${categoria}? Esta acción no se puede deshacer.`)) {
-            // Eliminar los elementos de la categoría del DOM
-            const heading = document.getElementById(`${categoria}Heading`);
-            const items = document.getElementById(`${categoria}Items`);
-            if (heading && items) {
-                heading.remove();
-                items.remove();
-            }
-
-            // Eliminar la categoría del selector y del localStorage
-            const option = document.querySelector(`#categoria option[value=${categoria}]`);
-            if (option) {
-                option.remove();
-            }
-            localStorage.removeItem(`${categoria}Items`);
-
-            alert(`Categoría ${categoria} eliminada exitosamente.`);
-        }
-    }
-</script>
-
 </body>
 </html>
