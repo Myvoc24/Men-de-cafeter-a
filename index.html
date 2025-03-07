@@ -3,64 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú de la Cafetería</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Si tienes un archivo CSS -->
-    <script defer src="script.js"></script> <!-- Enlace al archivo JavaScript -->
+    <title>Menú de la Cafetería Páramo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-<header>
-    <h1>Páramo</h1>
-    <nav>
-        <ul>
-            <li>Calidad</li>
-            <li>Confort</li>
-            <li>Higiene</li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <section id="menu">
-        <h2>Menú</h2>
-        <!-- Sección dinámica para las categorías -->
-    </section>
-    <section id="actualizar-menu" style="display: none;">
-        <h2>Actualizar Menú</h2>
-        <form id="menuForm">
-            <label for="categoria">Categoría:</label>
-            <select id="categoria" name="categoria" required></select>
-            <label for="producto">Producto:</label>
-            <input type="text" id="producto" name="producto" required>
-            <label for="precio">Precio:</label>
-            <input type="text" id="precio" name="precio" required>
-            <button type="button" onclick="actualizarMenu()">Agregar</button>
-        </form>
-        <h3>Crear Nueva Subcategoría</h3>
-        <form id="subcategoriaForm">
-            <label for="nuevaSubcategoria">Nombre de la Subcategoría:</label>
-            <input type="text" id="nuevaSubcategoria" name="nuevaSubcategoria" required>
-            <button type="button" onclick="crearSubcategoria()">Crear Subcategoría</button>
-        </form>
-        <h3>Eliminar Categoría</h3>
-        <form id="eliminarCategoriaForm">
-            <label for="eliminarCategoria">Seleccione la Categoría:</label>
-            <select id="eliminarCategoria" name="eliminarCategoria" required></select>
-            <button type="button" onclick="eliminarCategoriaCompleta()">Eliminar</button>
-        </form>
-    </section>
-    <section id="admin-acceso">
-        <button id="adminToggle">Acceso para Administradores</button>
-        <div id="adminLogin" style="display: none;">
-            <form id="loginForm">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" required>
-                <button type="button" onclick="verificarPassword()">Entrar</button>
+    <header>
+        <h1>Páramo</h1>
+        <nav>
+            <ul>
+                <li><a href="#calidad">Calidad</a></li>
+                <li><a href="#confort">Confort</a></li>
+                <li><a href="#higiene">Higiene</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="menu">
+            <h2>Menú</h2>
+            <!-- Aquí se cargará dinámicamente el menú -->
+        </section>
+        <section id="actualizar-menu" style="display: none;">
+            <h2>Actualizar Menú</h2>
+            <form id="menuForm">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required></select>
+                <label for="producto">Producto:</label>
+                <input type="text" id="producto" name="producto" required>
+                <label for="precio">Precio:</label>
+                <input type="text" id="precio" name="precio" required>
+                <button type="button" onclick="actualizarMenu()">Agregar</button>
             </form>
-        </div>
-    </section>
-</main>
-<footer>
-    <p>Contacto: info@cafeteria.com</p>
-    <p>Síguenos en nuestras redes sociales</p>
-</footer>
+            <h3>Crear Nueva Subcategoría</h3>
+            <form id="subcategoriaForm">
+                <label for="nuevaSubcategoria">Nombre de la Subcategoría:</label>
+                <input type="text" id="nuevaSubcategoria" name="nuevaSubcategoria" required>
+                <button type="button" onclick="crearSubcategoria()">Crear Subcategoría</button>
+            </form>
+            <h3>Eliminar Categoría</h3>
+            <form id="eliminarCategoriaForm">
+                <label for="eliminarCategoria">Seleccione la Categoría:</label>
+                <select id="eliminarCategoria" name="eliminarCategoria" required></select>
+                <button type="button" onclick="eliminarCategoriaCompleta()">Eliminar</button>
+            </form>
+        </section>
+        <section id="admin-acceso">
+            <button id="adminToggle">Acceso para Administradores</button>
+            <div id="adminLogin" style="display: none;">
+                <form id="loginForm">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                    <button type="button" onclick="verificarPassword()">Entrar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Contacto: info@cafeteria.com</p>
+        <p>Síguenos en nuestras redes sociales</p>
+    </footer>
 </body>
 </html>

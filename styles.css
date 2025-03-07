@@ -8,15 +8,16 @@
 /* Fuente y fondo general */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #fff5e6; /* Fondo color crema */
+    background-color: #f9f9f9; /* Fondo color claro */
     color: #333;
 }
 
 header {
-    background-color: #ff6f61; /* Naranja intenso */
+    background-color: #4caf50; /* Verde oscuro */
     color: white;
-    padding: 1rem;
+    padding: 1rem 0;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -29,16 +30,22 @@ nav li {
     margin: 0 1rem;
 }
 
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
 #menu {
     padding: 2rem;
-    background-color: #ffcc80; /* Naranja suave */
+    background-color: #e8f5e9; /* Verde muy claro */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
+    margin: 2rem auto;
+    width: 80%;
 }
 
 #menu h2, #menu h3 {
-    color: #d84315; /* Marrón rojizo */
+    color: #2e7d32; /* Verde intenso */
     margin-bottom: 1rem;
 }
 
@@ -54,20 +61,35 @@ nav li {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
-    color: #4e342e; /* Marrón oscuro */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu li img {
+    width: 50px; /* Ajusta según sea necesario */
+    height: 50px; /* Ajusta según sea necesario */
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 1rem;
 }
 
 #actualizar-menu {
     padding: 2rem;
-    background-color: #eceff1; /* Gris claro */
+    background-color: #e3f2fd; /* Azul muy claro */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
+    margin: 2rem auto;
+    width: 80%;
 }
 
-#actualizar-menu h2 {
-    color: #546e7a; /* Azul grisáceo */
+#actualizar-menu h2, #actualizar-menu h3 {
+    color: #1565c0; /* Azul intenso */
     margin-bottom: 1rem;
+}
+
+#menuForm, #subcategoriaForm, #eliminarCategoriaForm {
+    margin-bottom: 2rem;
 }
 
 #menuForm label,
@@ -80,33 +102,40 @@ nav li {
 }
 
 #menuForm select,
-#menuForm input {
+#menuForm input,
+#subcategoriaForm input,
+#eliminarCategoriaForm select {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-#menuForm button {
+#menuForm button,
+#subcategoriaForm button,
+#eliminarCategoriaForm button {
     padding: 0.75rem;
-    background-color: #ff6f61; /* Naranja intenso */
+    background-color: #4caf50; /* Verde oscuro */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-#menuForm button:hover {
-    background-color: #e64a19; /* Naranja más oscuro */
+#menuForm button:hover,
+#subcategoriaForm button:hover,
+#eliminarCategoriaForm button:hover {
+    background-color: #388e3c; /* Verde más oscuro */
 }
 
 #admin-acceso {
-    margin: 2rem 0;
+    margin: 2rem auto;
     text-align: right;
+    width: 80%;
 }
 
 #adminToggle {
     padding: 0.75rem;
-    background-color: #ff6f61; /* Naranja intenso */
+    background-color: #4caf50; /* Verde oscuro */
     color: white;
     border: none;
     border-radius: 4px;
@@ -114,20 +143,15 @@ nav li {
 }
 
 #adminToggle:hover {
-    background-color: #e64a19; /* Naranja más oscuro */
+    background-color: #388e3c; /* Verde más oscuro */
 }
 
 #adminLogin {
-    background-color: #eceff1; /* Gris claro */
+    background-color: #e3f2fd; /* Azul muy claro */
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 1rem;
-}
-
-#adminLogin h2 {
-    color: #546e7a; /* Azul grisáceo */
-    margin-bottom: 1rem;
 }
 
 #loginForm label,
@@ -146,7 +170,7 @@ nav li {
 
 #loginForm button {
     padding: 0.75rem;
-    background-color: #ff6f61; /* Naranja intenso */
+    background-color: #4caf50; /* Verde oscuro */
     color: white;
     border: none;
     border-radius: 4px;
@@ -154,7 +178,7 @@ nav li {
 }
 
 #loginForm button:hover {
-    background-color: #e64a19; /* Naranja más oscuro */
+    background-color: #388e3c; /* Verde más oscuro */
 }
 
 footer {
